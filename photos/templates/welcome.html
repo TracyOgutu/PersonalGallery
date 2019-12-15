@@ -9,11 +9,12 @@
            
         <div class="row">
 
-                <script type="text/javascript">
-                    function Copy() {
-                        urlCopied.innerHTML = window.location.href;
-                    }
-                </script>
+            <!-- <script type="text/javascript">
+                function Copy() {
+                    urlCopied.innerHTML = window.location.href;
+                }
+            </script> -->
+            
             <!-- Gallery item -->
 
             {% for image in photos %}
@@ -30,22 +31,19 @@
 
                     <div class="p-4">
                       
-
-                        <!-- <div
-                            class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                            <textarea id="urlCopied" rows="1" cols="20"></textarea>
-                        </div> -->
-
-                        
-
                         <div>
 
                             <!-- <div>
                                 <button value="Copy Url" onclick="Copy();">Copy Image</button>
                             </div> -->
+
+                            <div>
                             
-                            <div class="badge badge-success px-4 rounded-pill font-weight-large" style="font-size:100%;">Name:
-                                {{image.image_name}}
+                            <!-- <textarea id="urlCopied" rows="1" cols="20"></textarea> -->
+                        </div>
+                            
+                            <div class="badge badge-success px-4 rounded-pill font-weight-large" style="font-size:100%;">Category:
+                                {{image.category}}
                             </div>
                         </div>
 

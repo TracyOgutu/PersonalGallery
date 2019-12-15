@@ -4,11 +4,22 @@
 
 {{block.super}}
 
+<script type="text/javascript">
+  function Copy() 
+  {
+      //var Url = document.createElement("textarea");
+      urlCopied.innerHTML = window.location.href;
+      //Copied = Url.createTextRange();
+      //Copied.execCommand("Copy");
+  }
+  
+</script>
+
  <div class="container" style="margin-left: 18%;">
 
    <div class="row">
      
-     <img src="{{photo.photo_image.url}}"  class="img-responsive" alt="" height="30%" width="50%">
+     <img id="targetimage" src="{{photo.photo_image.url}}"  class="img-responsive" alt="" height="30%" width="50%">
 
    <div class="p-4">
       <h1>Title: {{photo.image_name}}</h1>
@@ -16,7 +27,15 @@
          <p>Location: {{photo.location}}</p>
          <p>Category: {{photo.category}}</p>
          <p>Posted: {{photo.pub_date|timesince}} ago</p>
+         <div>
+
+            <input style="margin-left:13%;" type="button" value="Copy Url" onclick="Copy();" />
+            <br />
+      
+           <span style="color: white;">URL: <textarea id="urlCopied" rows="1" cols="30"></textarea></span> 
+        </div>
    </div>
+   
      
       </div>
  </div>
