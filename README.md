@@ -42,7 +42,7 @@ This project was generated with python version 3.6.8 and django version 1.11
 
 ## Accessing the shell
 
-Run `python3.6` to use the shell 
+Run `python manage.py shell' to use the shell 
 
 ## Accessing the database
 
