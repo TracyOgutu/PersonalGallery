@@ -1,16 +1,54 @@
-!DOCTYPE html>
-<html>
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+    <title>Photo Gallery - {{title}}</title>
+    {% else %}
+    <title>Photo Gallery</title>
+    {% endif %}
 
-  {% if title %}
-  <title>Photo Gallery - {{title}}</title>
-  {% else %}
-    <title> Photo Gallery </title>
-  {% endif %}
+    {% block styles %}
+    {% bootstrap_css %}
+    
+    <link rel="stylesheet" href="{% static 'css/photo.css' %}">
+    {% endblock %}
 
+    
 </head>
 <body>
-    {% block content %} <h1>Photos </h1> {%endblock%}
+    {% include "navbar.html" %}
+    
+    {% block content %}
+    <div class="container">
+            <div class="px-lg-5">
+                    <div class="row py-5">
+                            <div class="col-lg-12 mx-auto">
+                              <div class="text-white p-5 shadow-sm rounded banner">
+                                <h1 class="display-4">Personal photo gallery</h1>
+                                <p class="lead">Photography is a way of feeling, of touching, of loving</p>
+                                <p class="lead">Savor the art
+                                              
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                  </div>
+
+    </div>
+    
+    
+    {%endblock%}
+
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+    {% endblock %}
+    
 </body>
 </html>
