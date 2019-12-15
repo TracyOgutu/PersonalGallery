@@ -1,0 +1,55 @@
+{%extends 'all-photos/base.html'%} 
+{% block content %}
+
+{{block.super}}
+
+<div class="container">
+
+    <div class="row">
+
+        {% if locationphotos %}
+        <h1 style="color: white; text-align: left; margin-left: 10%;">Found {{ locationphotos|length }} result of location {{message}}
+        </h1>
+
+        
+            
+                <!-- Gallery item -->
+
+                {% for image in locationphotos %}
+                <div class="row" style="margin-left: 10%;">
+
+                        <a href="{% url 'singlephoto' image.id %}">
+                            <img src="{{image.photo_image.url}}" height=300px; width=300px; alt="Image"
+                                style="height: 300px; ">
+                        </a>
+
+                        <div class="p-4">
+                            <h5> <a href="#" class="text-dark">Name: {{ image.image_name }}</a></h5>
+                          
+                            <p class="medium mb-0">{{ image.description }}</p>
+
+                            <div
+                                class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <div class="badge badge-success px-4 rounded-pill font-weight-large">Category:
+                                    {{image.category}}
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            
+
+        
+        {% else %}
+            <h1 style="color:white"> Found 0 results for location {{message}}</h1>
+            {% endif %}
+
+</div>
+
+       
+    
+{%endblock%}
