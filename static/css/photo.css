@@ -1,0 +1,20 @@
+body {
+    background-repeat: no-repeat;
+    background-position: absolute;
+    object-fit: cover;
+    background:url("http://digitalimagemakerworld.com/images/background-hd-wallpapers/36347065-background-hd-wallpapers.jpg");
+  }
+  
+  .banner {
+  
+    border: white;
+    background: transparent;
+  }
+
+  p{
+    color:white;
+  }
+
+  h1{
+    color:white;
+  }
