@@ -4,7 +4,7 @@
 
 {{block.super}}
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   function Copy() 
   {
       //var Url = document.createElement("textarea");
@@ -13,7 +13,7 @@
       //Copied.execCommand("Copy");
   }
   
-</script>
+</script> -->
 
  <div class="container" style="margin-left: 18%;">
 
@@ -27,13 +27,31 @@
          <p>Location: {{photo.location}}</p>
          <p>Category: {{photo.category}}</p>
          <p>Posted: {{photo.pub_date|timesince}} ago</p>
-         <div>
+
+         <!-- Adding copy functionality -->
+         <!-- <div>
 
             <input style="margin-left:13%;" type="button" value="Copy Url" onclick="Copy();" />
             <br />
       
            <span style="color: white;">URL: <textarea id="urlCopied" rows="1" cols="30"></textarea></span> 
+        </div> -->
+        <div>
+          <div>
+              <button class="btn btn primary" style="background-color: thistle;" onclick="imageurl('{{image.id}}-url');">Copy image link</button><br>
+          </div><br>
+          
+          <input class="form-control input-lg" type="text" value="http://127.0.0.1:8000{{photo.photo_image.url}}" id="{{image.id}}-url">
         </div>
+        <script>
+          function imageurl(element){
+            var image=document.getElementById(element);
+            image.select();
+            document.execCommand('copy');
+            alert("Copied the link of image:"+ image.value);
+          }
+        </script>
+        <!-- End of copy -->
    </div>
    
      
