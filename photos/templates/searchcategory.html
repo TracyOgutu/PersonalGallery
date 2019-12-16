@@ -9,48 +9,79 @@
     <div class="row">
 
         {% if categoryphotos %}
-        <h1 style="color: white; text-align: left; margin-left: 10%;">Found {{ categoryphotos|length }} of searched category {{message}}
+        <h1 style="color: white; text-align: left; margin-left: 10%;">Found {{ categoryphotos|length }} of searched
+            category {{message}}
         </h1>
 
-        
-            
-                <!-- Gallery item -->
 
-                {% for image in categoryphotos %}
-                <div class="row" style="margin-left: 10%;">
 
-                        <a href="{% url 'singlephoto' image.id %}">
-                            <img src="{{image.photo_image.url}}" height=300px; width=300px; alt="Image"
-                                style="height: 300px; ">
-                        </a>
+        <!-- Gallery item -->
 
-                        <div class="p-4">
-                            <h5> <a href="#" class="text-dark">Name: {{ image.image_name }}</a></h5>
-                            <h5> <a href="#" class="text-dark">Location: {{ image.location }}</a></h5>
-                            <p class="medium mb-0">{{ image.description }}</p>
+        {% for image in categoryphotos %}
+        <div class="row" style="margin-left: 10%;">
 
-                            <div
-                                class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <div class="badge badge-success px-4 rounded-pill font-weight-large">Category:
-                                    {{image.category}}
-                                </div>
+            <a href="{% url 'singlephoto' image.id %}">
+                <img src="{{image.photo_image.url}}" height=300px; width=300px; alt="Image" style="height: 300px; ">
+            </a>
+
+            <div class="p-4">
+                <h5> Name: {{ image.image_name }}</h5>
+                <h5> Location: {{ image.location }}</h5>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                    Zoom
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Category: {{image.category}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
+                            <div class="modal-body">
+                                <h3>Location: {{image.loaction}}</h3>
+                                <div>
+                                    <a href="{% url 'singlephoto' image.id %}"> <img class="img-fluid card-img-top"
+                                            style="height:80%; width: 100%;" src="{{image.photo_image.url}}"
+                                            alt="photo"></a>
+                                </div>
+                                <div>
+                                    <h5 style="text-align: left;">Click image to view more</h5>
+                                </div><br>
+                            </div>
+                            <div class="modal-footer">
 
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
+                            </div>
                         </div>
-
                     </div>
                 </div>
-                {% endfor %}
+
+
+
+
+
             </div>
 
         </div>
-        {% else %}
-            <h1 style="color:white"> Found 0 categories for the search term {{message}}</h1>
-            {% endif %}
-
-
-       
     </div>
+    {% endfor %}
+</div>
+
+</div>
+{% else %}
+<h1 style="color:white"> Found 0 categories for the search term {{message}}</h1>
+{% endif %}
+
+
+
+</div>
 </div>
 {% endblock %}
