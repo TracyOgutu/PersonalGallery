@@ -7,28 +7,69 @@
 <div class="container">
     <div class="px-lg-5">
         <div class="row">
-            {% for image in photos %}
-            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+    {% for image in photos %}
+    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+            <div class="bg-transparent rounded shadow-sm">
+        <img data-toggle="modal" data-target="#{{image.image_name}}" class="text-center" id="zoom"
+        src="{{image.photo_image.url}}" alt="{{image.image_name}}" style="width:100%;max-width:500px;padding-top:10px;height: 300px;">
+    </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="{{image.image_name}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{image.image_name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{image.photo_image.url}}" alt="{{image.image_name}}" style="width:100%;max-width:500px">
+                    <div style="padding-top:10px;">
+                        <input class="form-control input-lg" type="text"
+                            value="https://galleriapics.herokuapp.com{{image.photo_image.url}}" id="{{image.id}}-url">
+                        <div style="padding-top:10px;">
+                            <button class="btn btn-info" onclick="imageurl('{{image.id}}-url');">Copy Link</button><br>
+                        </div>
+                    </div>
+                    <script>
+                        function imageurl(element) {
+                            var image = document.getElementById(element);
+                            image.select();
+                            document.execCommand('copy');
+                            alert("Copied the link of image:" + image.value);
+                        }
+                    </script>
+                    <!-- End of copy -->
+                </div>
+                <div class="modal-footer">
+                    <p>{{image.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+    </div>
+    </div>
+    <!-- End -->
+</div>
+{% endblock %}
+
+<!-- <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                 <div class="bg-transparent rounded shadow-sm">
                     <a href="{% url 'singlephoto' image.id %}" >
                         <img id="zoom" src="{{image.photo_image.url}}" class="img-fluid card-img-top" alt="Image"
                             style="height: 300px; ">
                     </a>
-
                     <div>
                         <div>
-
                         </div><br>
                             <div class="badge badge-success px-4 rounded-pill font-weight-large" style="font-size:100%;">Category:
                                     <a href="{% url 'singlephoto' image.id %}">{{image.category}}</a>
-                                </div>
+                            </div>
                     </div>
                 </div>
 
-            </div>
-            {%endfor%}
-        </div>
-    </div>
-    <!-- End -->
-</div>
-{% endblock %}
+            </div> -->
